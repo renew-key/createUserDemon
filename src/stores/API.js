@@ -40,7 +40,7 @@ export const useAPIStore = defineStore('API', () => {
 
   const deleteUser = async (id) => {
     try {
-      const res = await User.delete(`/delete/${id}`);
+      const res = await User.delete(`/deleteUser/${id}`);
       console.log(res.data);
       return res.data;
     } catch (error) {
