@@ -1,0 +1,89 @@
+[
+  {
+      "cn": "中華民國",
+      "en": "TAIWAN",
+      "en_short": "TWN",
+      "code": "866"
+  },
+  {
+      "cn": "越南",
+      "en": "VIET NAM",
+      "en_short": "VNM",
+      "code": "84"
+  },
+  {
+      "cn": "菲律賓",
+      "en": "PHILIPPINES",
+      "en_short": "PHL",
+      "code": "63"
+  },
+  {
+      "cn": "印度",
+      "en": "INDIA",
+      "en_short": "IND",
+      "code": "91"
+  },
+  {
+      "cn": "日本",
+      "en": "JAPAN",
+      "en_short": "JPN",
+      "code": "81"
+  },
+
+  {
+      "cn": "美國",
+      "en": "UNITED STATES",
+      "en_short": "USA",
+      "code": "1"
+  },
+  {
+    "cn": "加拿大",
+    "en": "CANADA",
+    "en_short": "CA",
+    "code": "1"
+},
+
+  {
+      "cn": "中國",
+      "en": "CHINA",
+      "en_short": "CHN",
+      "code": "86"
+  },
+  {
+    "cn": "澳門",
+    "en": "MACAU",
+    "en_short": "MAC",
+    "code": "853"
+},
+  {
+      "cn": "香港",
+      "en": "HONG KONG",
+      "en_short": "HKG",
+      "code": "852"
+     
+  },
+  {
+      "cn": "澳大利亞(澳洲)",
+      "en": "AUSTRALIA",
+      "en_short": "AUS",
+      "code": "61"
+  },
+  {
+    "cn": "英國",
+    "en": "UNITED KINGDOM",
+    "en_short": "GBR",
+    "code": "44"
+},
+{
+  "cn": "新加坡",
+  "en": " SINGAPORE",
+  "en_short": "SGP",
+  "code": "65"
+},
+{
+  "cn": " 韓國",
+  "en": "KOREA REPUBLIC",
+  "en_short": "KOR",
+  "code": "82"
+}
+]

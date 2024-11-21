@@ -1,0 +1,36 @@
+{
+  "name": "kingxiawebsite",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vicons/ionicons5": "^0.12.0",
+    "@vue/runtime-core": "^3.4.31",
+    "axios": "^1.7.7",
+    "date-fns": "^2.30.0",
+    "dom-to-image": "^2.6.0",
+    "file-saver": "^2.0.5",
+    "pinia": "^2.1.7",
+    "swiper": "^11.1.4",
+    "vue": "^3.4.29",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.4.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "naive-ui": "^2.38.2",
+    "unplugin-auto-import": "^0.17.6",
+    "unplugin-vue-components": "^0.27.4",
+    "vfonts": "^0.0.3",
+    "vite": "^5.3.1",
+    "vite-plugin-pages": "^0.32.3",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-plugin-vue-layouts": "^0.11.0"
+  }
+}

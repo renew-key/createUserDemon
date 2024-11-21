@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"     # website
+      - "443:443"   #ssl
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro 
+      - dist_kingxiawebsite:/usr/share/nginx/html
+      - ./ssl:/sslConfig/
+    networks:
+      - kingxia_network
+    depends_on:
+      - kingxia_website 
+
+    
+
+  kingxia_website:
+    image: 192.168.0.19:5000/kingxiawebsite:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  
+    env_file:
+      - .env.production
+    networks:
+      - kingxia_network
+    volumes:
+      - dist_kingxiawebsite:/kingxia/website/dist
+
+networks:
+  kingxia_network:
+    driver: bridge
+
+volumes:
+  dist_kingxiawebsite:
