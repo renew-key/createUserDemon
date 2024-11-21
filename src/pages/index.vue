@@ -4,6 +4,7 @@ import { useAPIStore } from "@/stores/API.js";
 import { useMessage, NForm, NFormItem, NInput, NButton, NDataTable } from 'naive-ui';
 const { postUser, getUser, editUser, deleteUser } = useAPIStore()
 const idTmp = ref(-10)
+const enterString = ref('Create')
 // const isEdit = ref(false)
 const formRef = ref(null);
 const message = useMessage();
@@ -46,7 +47,8 @@ const GetData = async () => {
     message.error('Get user error!')
   }
 }
-const PostData = async (sendDate) => {
+const PostData = async (sendData) => {
+  console.log(sendData)
   const res = await postUser(sendData)
   if (res.statue == '200') {
     GetData();
@@ -61,6 +63,7 @@ const EditData = async (id, sendDate) => {
   if (res.statue == '200') {
     GetData();
     ClearAll();
+    enterString.value = 'Create'
     idTmp.value = -10
   } else {
     message.error('Edit user error!')
@@ -99,12 +102,18 @@ const handleValidateClick = (e) => {
 };
 
 
+
+
 const data = reactive([]);
 
 const Edit = (row) => {
   // isEdit.value = true
+  formValue.value.user.name = row.name
+  formValue.value.user.age = row.age
+  formValue.value.phone = row.phone
   idTmp.value = row.Id
-  message.info(`Edit ${row.Name}`);
+  enterString.value = 'Okay'
+  // message.info(`Edit ${row.Name}`);
 };
 
 const Delete = (row) => {
@@ -115,19 +124,19 @@ const Delete = (row) => {
 const columns = [
   {
     title: "Id",
-    key: "Id"
+    key: "id"
   },
   {
     title: "Name",
-    key: "Name"
+    key: "name"
   },
   {
     title: "Age",
-    key: "Age"
+    key: "age"
   },
   {
     title: "Phone",
-    key: "Phone"
+    key: "phone"
   },
   {
     title: "Edit",
@@ -165,7 +174,7 @@ const columns = [
 
 const pagination = false;
 onMounted(() => {
-  // GetData();
+  GetData();
 })
 </script>
 
@@ -210,23 +219,33 @@ onMounted(() => {
           />
         </n-form-item>
         <n-form-item>
-          <n-button @click="handleValidateClick">
-            Create
+          <n-button
+            @click="handleValidateClick"
+            type="success"
+          >
+            {{ enterString }}
           </n-button>
         </n-form-item>
         <n-form-item>
-          <n-button @click="ClearAll">
+          <n-button
+            @click="ClearAll"
+            strong
+            secondary
+            type="error"
+          >
             Clear
           </n-button>
         </n-form-item>
       </n-form>
-      <n-data-table
-        :columns="columns"
-        :data="data"
-        :pagination="pagination"
-        :bordered="false"
-      />
+
     </div>
+    <n-data-table
+      :columns="columns"
+      :data="data"
+      :pagination="pagination"
+      :bordered="false"
+      :max-height="250"
+    />
   </div>
 </template>
 
