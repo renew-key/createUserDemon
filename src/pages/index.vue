@@ -50,7 +50,7 @@ const GetData = async () => {
 const PostData = async (sendData) => {
   console.log(sendData)
   const res = await postUser(sendData)
-  if (res.statue == '200') {
+  if (res.status == '200') {
     GetData();
     ClearAll();
   } else {
@@ -60,7 +60,7 @@ const PostData = async (sendData) => {
 
 const EditData = async (id, sendDate) => {
   const res = await editUser(id, sendData)
-  if (res.statue == '200') {
+  if (res.status == '200') {
     GetData();
     ClearAll();
     enterString.value = 'Create'
@@ -71,7 +71,7 @@ const EditData = async (id, sendDate) => {
 }
 const DeleteData = async (id) => {
   const res = await deleteUser(id)
-  if (res.statue == '200') {
+  if (res.status == '200') {
     GetData();
     ClearAll();
   } else {

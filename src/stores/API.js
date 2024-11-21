@@ -30,7 +30,7 @@ export const useAPIStore = defineStore('API', () => {
 
   const editUser = async (id, data) => {
     try {
-      const res = await User.post(`/update/${id}`, data);
+      const res = await User.post(`/updateUser/${id}`, data);
       console.log(res.data);
       return res.data;
     } catch (error) {
