@@ -48,11 +48,12 @@ const GetData = async () => {
   }
 }
 const PostData = async (sendData) => {
-  console.log(sendData)
+  // console.log(sendData)
   const res = await postUser(sendData)
   if (res.status == '200') {
     GetData();
     ClearAll();
+    message.success(`${res.value}`)
   } else {
     message.error('Post user error!')
   }
@@ -65,6 +66,7 @@ const EditData = async (id, sendDate) => {
     ClearAll();
     enterString.value = 'Create'
     idTmp.value = -10
+    message.success(`${res.value}`)
   } else {
     message.error('Edit user error!')
   }
@@ -74,6 +76,7 @@ const DeleteData = async (id) => {
   if (res.status == '200') {
     GetData();
     ClearAll();
+    message.success(`${res.value}`)
   } else {
     message.error('Delete user error!')
   }
@@ -111,14 +114,14 @@ const Edit = (row) => {
   formValue.value.user.name = row.name
   formValue.value.user.age = row.age
   formValue.value.phone = row.phone
-  idTmp.value = row.Id
+  idTmp.value = row.id
   enterString.value = 'Okay'
   // message.info(`Edit ${row.Name}`);
 };
 
 const Delete = (row) => {
-  message.info(`Delete ${row.Name}`);
-  DeleteData(row.Id)
+  // message.info(`Delete ${row.Name}`);
+  DeleteData(row.id)
 };
 
 const columns = [

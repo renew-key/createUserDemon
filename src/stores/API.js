@@ -41,10 +41,9 @@ export const useAPIStore = defineStore('API', () => {
   const deleteUser = async (id) => {
     try {
       const res = await User.delete(`/deleteUser/${id}`);
-      console.log(res.data);
-      return res.data;
+      return res.data; // 返回後端回應資料
     } catch (error) {
-      console.log(error);
+      console.error('Failed to delete user:', error); // 打印錯誤訊息
     }
   };
 
