@@ -59,8 +59,10 @@ const PostData = async (sendData) => {
   }
 }
 
-const EditData = async (id, sendDate) => {
+const EditData = async (id, sendData) => {
+  console.log(sendData)
   const res = await editUser(id, sendData)
+  console.log(res)
   if (res.status == '200') {
     GetData();
     ClearAll();
@@ -112,7 +114,7 @@ const data = reactive([]);
 const Edit = (row) => {
   // isEdit.value = true
   formValue.value.user.name = row.name
-  formValue.value.user.age = row.age
+  formValue.value.user.age = String(row.age)
   formValue.value.phone = row.phone
   idTmp.value = row.id
   enterString.value = 'Okay'
