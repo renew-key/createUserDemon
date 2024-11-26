@@ -87,7 +87,7 @@ const handleValidateClick = (e) => {
   e.preventDefault();
   formRef.value?.validate((errors) => {
     if (!errors) {
-      message.success('Valid');
+      // message.success('Valid');
       const sendData = {
         name: formValue.value.user.name,
         age: formValue.value.user.age,
