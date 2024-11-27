@@ -53,6 +53,11 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/user\/API/, ''),
         },
+        '/user/register': {
+          target: env.VITE_REGISTER_API,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/user\/register/, ''),
+        },
       },
     },
   };

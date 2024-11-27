@@ -7,7 +7,7 @@ import { useMessage, NForm, NFormItem, NInput, NButton, NDataTable, NRow, NCol }
 const APIStore = useAPIStore();
 
 const { msg } = storeToRefs(APIStore);
-const { postRegister } = useAPIStore()
+const { postLogin } = useAPIStore()
 // 定義表單引用
 const formRef = ref(null);
 const rPasswordFormItemRef = ref(null);
@@ -16,9 +16,7 @@ const message = useMessage();
 // 表單模型
 const model = ref({
   email: null,
-  username: null,
   password: null,
-  reenteredPassword: null
 });
 
 // 驗證函數
@@ -59,13 +57,6 @@ const rules = {
       trigger: "input"
     },
   ],
-  username: [
-    {
-      required: true,
-      message: "Name is required",
-      trigger: ["input", "blur"]
-    }
-  ],
   password: [
     {
       required: true,
@@ -73,23 +64,7 @@ const rules = {
       trigger: ["input", "blur"]
     }
   ],
-  reenteredPassword: [
-    {
-      required: true,
-      message: "Re-entered password is required",
-      trigger: ["input", "blur"]
-    },
-    {
-      validator: validatePasswordStartWith,
-      message: "Password is not same as re-entered password!",
-      trigger: "input"
-    },
-    {
-      validator: validatePasswordSame,
-      message: "Password is not same as re-entered password!",
-      trigger: ["blur", "password-input"]
-    }
-  ]
+
 };
 
 // 處理密碼輸入事件
@@ -100,7 +75,7 @@ function handlePasswordInput() {
 }
 
 const postData = async (sendData) => {
-  const res = await postRegister(sendData)
+  const res = await postLogin(sendData)
   if (res.status == '200') {
     message.success(`${msg.value}`);
     clearAll();
@@ -111,7 +86,6 @@ const postData = async (sendData) => {
 }
 const clearAll = () => {
   model.value.email = null
-  model.value.username = null
   model.value.password = null
 }
 // 驗證按鈕點擊事件
@@ -121,7 +95,6 @@ const handleValidateButtonClick = (e) => {
     if (!errors) {
       const sendData = {
         email: model.value.email,
-        username: model.value.username,
         password: model.value.password,
       };
       postData(sendData)
@@ -138,7 +111,7 @@ const handleValidateButtonClick = (e) => {
 
 
   <div class="form-container">
-    <h1 style="margin-bottom: 20px;">Register</h1>
+    <h1 style="margin-bottom: 20px;">Login</h1>
     <n-form
       style="width: 70%;"
       ref="formRef"
@@ -155,15 +128,6 @@ const handleValidateButtonClick = (e) => {
         />
       </n-form-item>
       <n-form-item
-        path="username"
-        label="username"
-      >
-        <n-input
-          v-model:value="model.username"
-          @keydown.enter.prevent
-        />
-      </n-form-item>
-      <n-form-item
         path="password"
         label="password"
       >
@@ -174,28 +138,14 @@ const handleValidateButtonClick = (e) => {
           @keydown.enter.prevent
         />
       </n-form-item>
-      <n-form-item
-        ref="rPasswordFormItemRef"
-        first
-        path="reenteredPassword"
-        label="reentered password"
-      >
-        <n-input
-          v-model:value="model.reenteredPassword"
-          :disabled="!model.password"
-          type="password"
-          @keydown.enter.prevent
-        />
-      </n-form-item>
       <n-row :gutter="[0, 24]">
         <n-col :span="24">
           <div style="display: flex; justify-content: flex-end">
             <n-button
-              round
               type="primary"
               @click="handleValidateButtonClick"
             >
-              Okay
+              login
             </n-button>
           </div>
         </n-col>
